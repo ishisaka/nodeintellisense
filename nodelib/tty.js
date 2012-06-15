@@ -1,11 +1,17 @@
 ﻿/// <reference path="./net.js"/>
 
 var TTY = function(){
-    this.isatty = function(fd){return new Boolean();};
+    this.isatty = function (fd) {
+        /// <param name='fd' type='Number' />file descriptor</param>
+        /// <returns type='Boolean' />
+        return new Boolean();
+    };
     ////tty.setRawMode = function(mode){};Deprecated
     this.ReadStream = function () {
         this.isRaw = new Boolean();
-        this.setRawMode = function (mode) { };
+        this.setRawMode = function (mode) {
+            /// <param name='mode' type='Object' />
+        };
     };
     this.ReadStream.prototype = new Net.Socket();
 

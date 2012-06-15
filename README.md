@@ -1,7 +1,7 @@
-Node.js VisualStudio IntelliSence
+Node.js VisualStudio IntelliSense
 ===
 
-Node.js VisualStudio IntelliSence
+Node.js VisualStudio IntelliSense
 
 - Require VisualStudio 2012b
 - This library adds the definition of Node.js to VisualStudio. 
@@ -19,6 +19,9 @@ your javascript file
 	--your codes
 
 ##History
+
+###v0.0.2: 2012/06/15
+- The addition of function argument type.
 
 ###v0.0.1: 2012/06/07
 - Release

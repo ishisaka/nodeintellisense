@@ -1,5 +1,6 @@
 ﻿/// node.js 0.7.9
 
+/// <reference path="./buffer.js"/>
 /// <reference path="./process.js"/>
 /// <reference path="./console.js"/>
 /// <reference path="./module.js"/>
@@ -29,60 +30,16 @@
 /// <reference path="./os.js"/>
 /// <reference path="./cluster.js"/>
 
-/// <reference path="./socket.io/socket.io.js"/>
-
 
 var global = new Object();
 var process = new Process();
 var console = new Console();
 var module = new Module();
 var exports = module.exports;
+var Buffer = Buffer;
 
-var Buffer = function (args) {
-    var buf = new Array();
-    buf.write = function (string, offset, length, encoding) { };
-    //    buf.toString = function(encoding, start, end){};
-    buf.copy = function (targetBuffer, targetStart, sourceStart, sourceEnd) { };
-    //    buf.slice = function(start, end){};
-    buf.readUInt8 = function (offset, noAssert) { return new Number(); };
-    buf.readUInt16LE = function (offset, noAssert) { return new Number(); };
-    buf.readUInt16BE = function (offset, noAssert) { return new Number(); };
-    buf.readUInt32LE = function (offset, noAssert) { return new Number(); };
-    buf.readUInt32BE = function (offset, noAssert) { return new Number(); };
-    buf.readInt8 = function (offset, noAssert) { return new Number(); };
-    buf.readInt16LE = function (offset, noAssert) { return new Number(); };
-    buf.readInt16BE = function (offset, noAssert) { return new Number(); };
-    buf.readInt32LE = function (offset, noAssert) { return new Number(); };
-    buf.readInt32BE = function (offset, noAssert) { return new Number(); };
-    buf.readFloatLE = function (offset, noAssert) { return new Number(); };
-    buf.readFloatBE = function (offset, noAssert) { return new Number(); };
-    buf.readDoubleLE = function (offset, noAssert) { return new Number(); };
-    buf.readDoubleBE = function (offset, noAssert) { return new Number(); };
-    buf.writeUInt8 = function (value, offset, noAssert) { };
-    buf.writeUInt16LE = function (value, offset, noAssert) { };
-    buf.writeUInt16BE = function (value, offset, noAssert) { };
-    buf.writeUInt32LE = function (value, offset, noAssert) { };
-    buf.writeUInt32BE = function (value, offset, noAssert) { };
-    buf.writeInt8 = function (value, offset, noAssert) { };
-    buf.writeInt16LE = function (value, offset, noAssert) { };
-    buf.writeInt16BE = function (value, offset, noAssert) { };
-    buf.writeInt32LE = function (value, offset, noAssert) { };
-    buf.writeInt32BE = function (value, offset, noAssert) { };
-    buf.writeFloatLE = function (value, offset, noAssert) { };
-    buf.writeFloatBE = function (value, offset, noAssert) { };
-    buf.writeDoubleLE = function (value, offset, noAssert) { };
-    buf.writeDoubleBE = function (value, offset, noAssert) { };
-    buf.fill = function (value, offset, end) { };
-    return buf;
-};
-Buffer.isBuffer = function (obj) { return new Boolean(); };
-Buffer.byteLength = function (string, encoding) { return new Number(); };
-var INSPECT_MAX_BYTES = new Number(50);
 
 var require = function (args) {
-    
-
-//    if (typeof args === 'string')
     if (typeof args === 'string' || args instanceof String)
         args = args.substr(args.lastIndexOf('/') + 1);
 
@@ -115,8 +72,6 @@ var require = function (args) {
         case 'zlib': return new Zlib();
         case 'os': return new OS();
         case 'cluster': return new Cluster();
-            ////
-        case 'socket.io': return new SocketIO();
     }
 };
 require.resolve = new Function();
@@ -125,7 +80,11 @@ require.extensions = new Array();
 
 var __filename = new String();
 var __dirname = new String();
-var setTimeout = function (cb, ms) { };
-var clearTimeout = function(t){};
-var setInterval = function(cb, ms){};
-var clearInterval = function (t) { };
+var setTimeout = function (cb, ms) {
+};
+var clearTimeout = function (t) {
+};
+var setInterval = function (cb, ms) {
+};
+var clearInterval = function (t) {
+};
