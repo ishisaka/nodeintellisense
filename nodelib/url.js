@@ -1,20 +1,32 @@
-﻿var URL = function () {
+﻿/// <reference path="node.js" />
+
+var URL = function () {
+    /// <summary>
+    /// This module has utilities for URL resolution and parsing. Call require('url') to use it.
+    /// </summary<>
     this.parse = function (urlStr, parseQueryString, slashesDenoteHost) {
+        /// <summary>Take a URL string, and return an object.</summary>
         /// <param name='urlStr' type='String' />
-        /// <param name='parseQueryString' type='Boolean' optional='true' />
-        /// <param name='slashesDenoteHost' type='Boolean' optional='true' />
-        /// <returns type='Object' />
-        new Object();
+        /// <param name='parseQueryString' type='Boolean' optional='true'></param>
+        /// <param name='slashesDenoteHost' type='Boolean' optional='true'></param>
+        /// <returns type='Object'>URL Object.</returns>
+        return new Object();
     };
-    this.format = function (urlObj) {
-        /// <param name='urlObj' type='String' />
-        /// <returns type='String' />
-        new String();
+    this.format = function(urlObj) {
+    	/// <summary>
+        /// Take a parsed URL object, and return a formatted URL string.
+    	/// </summary>
+        /// <param name="urlObj">URL Object</param>
+        /// <returns type="String" />
+        return new String();
     };
-    this.resolve = function (from, to) {
-        /// <param name='from' type='String' />
-        /// <param name='to' type='String' />
-        /// <returns type='String' />
-        new String();
+    this.resolve = function(from, to) {
+    	/// <summary>
+        /// Take a base URL, and a href URL, and resolve them as a browser would for an anchor tag.
+    	/// </summary>
+    	/// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <returns type="String" />
+        return new String();
     };
 };
