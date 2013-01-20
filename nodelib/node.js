@@ -1,4 +1,4 @@
-﻿/// node.js 0.7.9
+/// node.js 0.8.18
 
 /// <reference path="./buffer.js"/>
 /// <reference path="./process.js"/>
@@ -29,6 +29,8 @@
 /// <reference path="./zlib.js"/>
 /// <reference path="./os.js"/>
 /// <reference path="./cluster.js"/>
+/// <reference path="punycode.js" />
+/// <reference path="stringdecoder.js" />
 
 
 var global = new Object();
@@ -72,6 +74,8 @@ var require = function (args) {
         case 'zlib': return new Zlib();
         case 'os': return new OS();
         case 'cluster': return new Cluster();
+        case 'punycode': return new PunyCode();
+        case 'string_decoder': return new String_Decoder;
     }
 };
 require.resolve = new Function();
@@ -81,10 +85,50 @@ require.extensions = new Array();
 var __filename = new String();
 var __dirname = new String();
 var setTimeout = function (cb, ms) {
+    /// <summary>
+    /// To schedule execution of a one-time callback after delay milliseconds. <br />
+    /// Returns a timeoutId for possible use with clearTimeout(). Optionally <br />
+    /// you can also pass arguments to the callback.
+    /// </summary>
+    /// <param name='cb'>
+    /// Callback function.
+    /// </param>
+    /// <param name='ms'>
+    /// Dlay Time(ms)
+    /// </param>
+    /// <returns>timeoutId</returns>
+
+    return new Number();
 };
 var clearTimeout = function (t) {
+    /// <summary>
+    /// Prevents a timeout from triggering.
+    /// </summary>
+    /// <param name='t'>
+    /// timeoutId
+    /// </param>
 };
 var setInterval = function (cb, ms) {
+    /// <summary>
+    /// To schedule the repeated execution of callback every delay milliseconds.<br />
+    /// Returns a intervalId for possible use with clearInterval(). Optionally <br />
+    /// you can also pass arguments to the callback.
+    /// </summary> 
+    /// <param name='cb'>
+    /// Callback function.
+    /// </param>
+    /// <param name='ms'>
+    /// Dlay Time(ms)
+    /// </param>
+    /// <returns>timeoutId</returns>
+
+    return new Number();
 };
 var clearInterval = function (t) {
+    /// <summary>
+    /// Prevents a timeout from triggering.
+    /// </summary>
+    /// <param name='t'>
+    /// timeoutId
+    /// </param>
 };
