@@ -40,10 +40,10 @@ Very, Very thanks kuroninn.
 ###v0.1.0: 2013/01/20
 
 * Alpha Release.
-* Target Node.js vewrsion 0.8.17
+* Target Node.js version 0.8.17
 * The addition of summary comments from original codes.
-* The addition of Punycode library from original codes.
-* All Classes and functions are modified drom original code.
+* The addition of Punycode library codes.
+* All Classes and functions are modified from original code.
 * Author changed.
 
 
