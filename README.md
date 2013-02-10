@@ -37,7 +37,15 @@ Very, Very thanks kuroninn.
 
 ##History
 
-###v0.1.0: 2013/01/20
+###v.0.1.1
+
+* Alpha Release.
+* Target Node.js version 0.8.19
+
+#### Bug
+* Corrected line feed code.
+
+###v.0.1.0: 2013/01/20
 
 * Alpha Release.
 * Target Node.js version 0.8.17
