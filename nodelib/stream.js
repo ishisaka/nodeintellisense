@@ -1,6 +1,6 @@
 ﻿/// <reference path="events.js" />
 
-var Stream = function () {
+require.modules.stream = function () {
     /// <summary>
     /// A stream is an abstract interface implemented by various objects in Node. <br />
     /// For example a request to an HTTP server is a stream, as is stdout. <br />
@@ -120,4 +120,4 @@ var Stream = function () {
     };
 };
 
-Stream.prototype = new Events.EventEmitter();
+require.modules.stream.prototype = new require.modules.events.EventEmitter();

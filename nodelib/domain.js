@@ -1,6 +1,7 @@
+/// <reference path="./core.js" />
 /// <reference path="./events.js"/>
 
-var Domain = function () {
+require.modules.domain = function () {
     /// <summary>
     /// Domains provide a way to handle multiple different IO operations as a <br />
     /// single group. If any of the event emitters or callbacks registered to a <br />
@@ -85,5 +86,6 @@ var Domain = function () {
 
     };
 };
-Domain.prototype = new Events.EventEmitter();
+require.modules.domain.prototype = new require.modules.events.EventEmitter();
 
+require.modules.domain = new require.modules.domain();

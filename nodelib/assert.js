@@ -1,5 +1,6 @@
-﻿var Assert = function () {
-    var assert = function (value, message) {
+﻿/// <reference path="./core.js" />
+(function () {
+    var assert = require.modules.assert = function (value, message) {
         /// <summary>
         /// This module is used for writing unit tests for your applications, you can access it with require('assert').
         /// </summary>
@@ -89,5 +90,4 @@
         /// </summary>
         /// <param name='value' type='Object'></param>
     };
-    return assert;
-};
+})();

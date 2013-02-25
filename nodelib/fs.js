@@ -1,6 +1,7 @@
-﻿/// <reference path="./stream.js"/>
+﻿/// <reference path="./node.js"/>
+/// <reference path="./stream.js"/>
 
-var Fs = function () {
+require.modules.fs = new function () {
     ///<summary>File I/O is provided by simple wrappers around standard POSIX functions. All the methods have asynchronous and synchronous forms.</summary>
     ///<field name="Stats">Objects returned from `fs.stat()` and `fs.lstat()` are of this type.</field>
     ///<field name="ReadStream">`ReadStream` is a `Readable Stream`.</field>
@@ -134,7 +135,7 @@ var Fs = function () {
         /// The callback gets two arguments (err, stats) where stats is a fs.Stats object.
         /// </param>
         /// <returns type='Fs.Stats' />
-        return new Fs.Stats();
+        return new require.modules.fs.Stats();
     };
     this.lstat = function (path, callback) {
         /// <summary>Asynchronous lstat. The callback gets two arguments (err, stats) where stats is a fs.Stats object. <br />
@@ -146,7 +147,7 @@ var Fs = function () {
         /// The callback gets two arguments (err, stats) where stats is a fs.Stats object.
         /// </param>
         /// <returns type='Fs.Stats' />
-        return new Fs.Stats();
+        return new require.modules.fs.Stats();
     };
     this.fstat = function (fd, callback) {
         /// <summary>Synchronous lstat.</summary>
@@ -156,25 +157,25 @@ var Fs = function () {
         /// The callback gets two arguments (err, stats) where stats is a fs.Stats object.
         /// </param>
         /// <returns type='Fs.Stats' />
-        return new Fs.Stats();
+        return new require.modules.fs.Stats();
     };
     this.statSync = function (path) {
         /// <summary>Synchronous stat. Returns an instance of fs.Stats.</summary>
         /// <param name='path' type='String' />
         /// <returns type='Fs.Stats' />
-        return new Fs.Stats();
+        return new require.modules.fs.Stats();
     };
     this.lstatSync = function (path) {
         /// <summary>Synchronous lstat. Returns an instance of fs.Stats.</summary>
         /// <param name='path' type='String' />
         /// <returns type='Fs.Stats' />
-        return new Fs.Stats();
+        return new require.modules.fs.Stats();
     };
     this.fstatSync = function (fd) {
         /// <summary>Synchronous fstat. Returns an instance of fs.Stats.</summary>
         /// <param name='fd' type='Number' >file descriptor</param>
         /// <returns type='Fs.Stats' />
-        return new Fs.Stats();
+        return new require.modules.fs.Stats();
     };
     this.link = function (srcpath, dstpath, callback) {
         /// <summary>Asynchronous link. No arguments other than a possible exception are given to the completion callback.</summary>
@@ -519,7 +520,7 @@ var Fs = function () {
         /// The listener callback gets two arguments (event, filename). event is either 'rename' or 'change', and filename is the name of the file which triggered the event.
         /// </param>
         /// <returns type='Fs.FSWatcher' ></returns>
-        return new Fs.FSWatcher();
+        return new require.modules.fs.FSWatcher();
     };
     this.exists = function (path, callback) {
         /// <summary>Test whether or not the given path exists by checking with the file system. </summary>
@@ -543,7 +544,7 @@ var Fs = function () {
         /// bufferSize sets up the number of bytes read at a time. Default buffer size is 64KB.
         /// </param>
         /// <returns type='Fs.ReadStream' >New ReadStream object</returns>
-        return new Fs.ReadStream();
+        return new require.modules.fs.ReadStream();
     };
     this.createWriteStream = function (path, options) {
         /// <summary>Returns a new WriteStream object.</summary>
@@ -555,11 +556,11 @@ var Fs = function () {
         /// The mode can set file permission mode.
         /// </param>
         /// <returns type='Fs.WriteStream' >New WriteStream object</returns>
-        return new Fs.WriteStream();
+        return new require.modules.fs.WriteStream();
     };
 }
 
-Fs.Stats = function () {
+require.modules.fs.Stats = function () {
     /// <summary>Objects returned from fs.stat(), fs.lstat() and fs.fstat() and their synchronous counterparts are of this type.</summary>
     this.isFile = function () {
         /// <returns type='Boolean' ></returns>
@@ -591,19 +592,20 @@ Fs.Stats = function () {
     };
 }
 
-Fs.ReadStream = function () {
+require.modules.fs.ReadStream = function () {
     /// <summary>ReadStream is a Readable Stream.</summary>
     /// <returns type='Stream' ></returns>
     return new Stream();
 }
 
-Fs.WriteStream = function () {
+require.modules.fs.WriteStream = function () {
     /// <summary>WriteStream is a Writable Stream.</summary>
     /// <returns type='Stream' ></returns>
     return new Stream();
 }
 
-Fs.FSWatcher = function () {
-    /// <summary>Stop watching for changes on the given fs.FSWatcher.</summary>
-    this.close = function () { };
+require.modules.fs.FSWatcher = function () {
+    this.close = function () {
+        /// <summary>Stop watching for changes on the given fs.FSWatcher.</summary>
+    };
 }

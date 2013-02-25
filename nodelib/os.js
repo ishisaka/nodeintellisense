@@ -1,5 +1,4 @@
-﻿
-var OS = function () {
+﻿require.modules.os = new function () {
     /// <summary>
     /// Provides a few basic operating-system related utility functions.
     /// Use require('os') to access this module.

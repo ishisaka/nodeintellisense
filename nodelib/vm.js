@@ -1,4 +1,4 @@
-﻿var VM = function () {
+﻿require.modules.vm = new function () {
     /// <summary>
     /// JavaScript code can be compiled and run immediately or compiled, saved, and run later.
     /// </summary>
@@ -60,11 +60,11 @@
         /// <param name="code" type="String" />
         /// <param name="filename" type="String" optional="true" />
         /// <returns type="VM.Script" />
-        return new VM.Script();
+    	return new require.modules.vm.Script();
     };
 };
 
-VM.Script = function () {
+require.modules.vm.Script = function () {
     /// <summary>A class for running scripts. Returned by vm.createScript.</summary>
     this.runInThisContext = function() {
     	/// <summary>

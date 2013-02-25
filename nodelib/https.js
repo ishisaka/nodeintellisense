@@ -1,7 +1,7 @@
 ﻿/// <reference path="tls.js" />
 /// <reference path="http.js" />
 
-var HTTPS = function () {
+require.modules.https = new function () {
     /// <summary>HTTPS is the HTTP protocol over TLS/SSL. In Node this is implemented as a separate module.</summary>
     this.createServer = function (options, requestListener) {
         /// <summary>
@@ -12,7 +12,7 @@ var HTTPS = function () {
         /// <param name='options' type='Object' />
         /// <param name='requestListener' value='requestListener(new HTTP.ServerRequest(),new HTTP.ServerResponse())' optional='true' />
         /// <returns type='HTTPS.Server' />
-        return new HTTPS.Server();
+    	return new require.modules.https.Server();
     };
     this.request = function (options, callback) {
         /// <summary>
@@ -21,29 +21,29 @@ var HTTPS = function () {
         /// <param name='options' type='Object' />
         /// <param name='callback' value='callback(new HTTP.ClientRequest())' optional='true'/>
         /// <returns type='HTTP.ClientRequest' />
-        return new HTTP.ClientRequest();
+    	return new require.modules.http.ClientRequest();
     };
     this.get = function (options, callback) {
         /// <summary>Like http.get() but for HTTPS.</summary>
         /// <param name='options' type='Object' />
         /// <param name='callback' value='callback(new HTTP.ClientRequest())' optional='true'/>
         /// <returns type='HTTP.ClientRequest' />
-        return new HTTP.ClientRequest();
+    	return new require.modules.http.ClientRequest();
     };
-    this.globalAgent = new HTTPS.Agent();
+    this.globalAgent = new require.modules.https.Agent();
 };
 
-HTTPS.Server = function() {
+require.modules.https.Server = function() {
     /// <summary>This class is a subclass of tls.Server and emits events same as http.Server.</summary>
 };
-HTTPS.Server.prototype = new TLS.Server();
+require.modules.https.Server.prototype = new TLS.Server();
 
-HTTPS.Agent = function() {
+require.modules.https.Agent = function() {
 	/// <summary>
     /// An Agent object for HTTPS similar to http.Agent. See https.request() for more information.
 	/// </summary>
 
 };
 
-HTTPS.Agent.prototype = new HTTP.Agent();
+require.modules.https.Agent.prototype = new require.modules.http.Agent();
 

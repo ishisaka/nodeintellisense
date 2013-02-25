@@ -1,4 +1,4 @@
-﻿var Path = function () {
+﻿require.modules.path = new function () {
     /// <summary>
     /// This module contains utilities for handling and transforming file <br />
     /// paths. Almost all these methods perform only string transformations. <br />

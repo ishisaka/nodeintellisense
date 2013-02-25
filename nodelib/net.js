@@ -1,4 +1,6 @@
-﻿var Net = function () {
+﻿/// <reference path="core.js" />
+
+require.modules.net = new function () {
     this.createServer = function (options, connectionListener) {
         /// <summary>Creates a new TCP server.</summary>
         /// <param name='options' type='Object' optional='true' />
@@ -6,7 +8,7 @@
         ///  The connectionListener argument is automatically set as a listener for the 'connection' event.
         /// </param>
         /// <returns type='Net.Server' />
-        return new Net.Server();
+        return new require.modules.net.Server();
     };
     this.connect = function (options, connectionListener) {
         /// <summary>Constructs a new socket object and opens the socket to the given location. When the socket is established, the 'connect' event will be emitted.</summary>
@@ -20,7 +22,7 @@
         /// The connectListener parameter will be added as an listener for the 'connect' event.
         /// </param>
         /// <returns type='Net.Socket' />
-        return new Net.Socket();
+        return new require.modules.net.Socket();
     };
     this.createConnection = function (options, connectionListener) {
         /// <summary>Constructs a new socket object and opens the socket to the given location. When the socket is established, the 'connect' event will be emitted.</summary>
@@ -34,7 +36,7 @@
         /// The connectListener parameter will be added as an listener for the 'connect' event.
         /// </param>
         /// <returns type='Net.Socket' />
-        return new Net.Socket();
+        return new require.modules.net.Socket();
     };
     this.isIP = function (input) {
         /// <summary>Tests if input is an IP address. Returns 0 for invalid strings, returns 4 for IP version 4 addresses, and returns 6 for IP version 6 addresses.</summary>
@@ -54,13 +56,12 @@
         /// <returns type='Boolean' />
         return new Boolean();
     };
-    this.Socket = Net.Socket;
 };
 
 
 
 
-Net.Socket = function (options) {
+require.modules.net.Socket = function (options) {
     /// <summary>
     /// Construct a new socket object.
     /// </summary>
@@ -222,21 +223,21 @@ Net.Socket = function (options) {
 };
 
 
-Net.Server = function () {
+require.modules.net.Server = function () {
     this.listen = function (port, host, backlog, listeningListener) {
-    	/// <summary>
+        /// <summary>
         /// Begin accepting connections on the specified port and host. 
-    	/// </summary>
+        /// </summary>
         /// <param name="port">Port Number. A port value of zero will assign a random port.</param>
         /// <param name="host" optional='true'>If the host is omitted, the server will accept connections directed to any IPv4 address (INADDR_ANY). </param>
         /// <param name="backlog" optional='true'>
         /// Backlog is the maximum length of the queue of pending connections. 
         /// The actual length will be determined by your OS through sysctl settings such as tcp_max_syn_backlog and somaxconn on linux. 
-    	/// The default value of this parameter is 511 (not 512).
+        /// The default value of this parameter is 511 (not 512).
         /// </param>
         /// <param name="listeningListener optional='true'">
         /// This function is asynchronous. When the server has been bound, 'listening' event will be emitted. 
-    	/// The last parameter callback will be added as an listener for the 'listening' event.
+        /// The last parameter callback will be added as an listener for the 'listening' event.
         /// </param>  
         /// <field name="maxConnections">Set this property to reject connections when the server's connection count gets high.</field>  
         /// <field name="connections">The number of concurrent connections on the server.</field>  
@@ -262,4 +263,4 @@ Net.Server = function () {
     };
 };
 
-Net.Server.prototype = new Net.Socket();
+require.modules.net.Server.prototype = new Net.Socket();

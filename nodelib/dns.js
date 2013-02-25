@@ -1,4 +1,4 @@
-﻿var DNS = function () {
+﻿require.modules.crypto.dns = new function () {
     /// <summary>
     /// Use require('dns') to access this module. All methods in the dns module<br />
     /// use C-Ares except for dns.lookup which uses getaddrinfo in a thread pool. <br />
