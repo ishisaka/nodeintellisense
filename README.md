@@ -5,17 +5,29 @@ Node.js IntelliSense for Visual Studio
 - This project adds definitions for Node.js libraries to Visual Studio's Javascript IntelliSense. 
 
 ##Installation
-	Create folder named 'nodelib' under the web site root directory.
-	The nodelib folder included files copy to the folder made a while ago.
+Copy the `nodelib` folder from this repository to the root directory of your website project.
 
 ##Usage
-Create Directory whith named 'Scripts' under the site root directory.
 
-your javascript file
+Add
 
 	/// <reference path="~/nodelib/node.js"/>
 
-	--your codes
+to `~/Scripts/_references.js`.
+
+###Adding custom modules
+To add IntelliSense for non-built-in modules, set <code>require.modules.<i>module name</i></code> to the object exported by the module.  Calling <code>require("<i>module name</i>")</code> will then return that object.
+
+You can usually expose existing files by creating a separate file that looks like this:
+
+```js
+/// <reference path="../node_modules/q/q.js" />
+require.modules.q = exports;
+exports = module.exports = {};
+```
+
+And referencing that file in `~/Scripts/_references.js`.
+
 ##Licence
 
 Copylight &copy; 2013 Tadahiro Ishisaka (http://isisaka.com/)
@@ -35,15 +47,15 @@ Very, very thanks kuroninn.
 
 ##History
 
-###v.0.1.1
+###v0.2
+ * Add support for custom modules defined in `require.modules`.  (by [SLaks](https://github.com/SLaks))
+
+###v0.1.1
 
 * Alpha Release.
 * Target Node.js version 0.8.19
 
-#### Bug
-* Corrected line feed code.
-
-###v.0.1.0: 2013/01/20
+###v0.1.0: 2013/01/20
 
 * Alpha Release.
 * Target Node.js version 0.8.17
