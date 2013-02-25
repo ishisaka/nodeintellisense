@@ -1,10 +1,8 @@
-Node.js VisualStudio IntelliSense
+Node.js IntelliSense for Visual Studio
 ===
 
-Node.js VisualStudio IntelliSense
-
 - Require VisualStudio 2012 / Visual Studio 2010
-- This libraries provides node.js with the Intellisencse function on VisualStudio. 
+- This project adds definitions for Node.js libraries to Visual Studio's Javascript IntelliSense. 
 
 ##Installation
 	Create folder named 'nodelib' under the web site root directory.
@@ -27,13 +25,13 @@ See below "LICENSE" file.
 
 ##Original
 
-Original Codes by  kurouninn.
+Originally written by kurouninn.
 
-As for the original source code, the MIT license is former-distributed. See below "Origina License" file.
+As for the original source code, the MIT license is former-distributed. See below "Original License" file.
 
 URL: <https://bitbucket.org/kurouninn/node.js-visualstudio-intellisense>
 
-Very, Very thanks kuroninn.
+Very, very thanks kuroninn.
 
 ##History
 
