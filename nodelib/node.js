@@ -1,5 +1,6 @@
 /// node.js 0.8.18
 
+/// <reference path="core.js" />
 /// <reference path="./buffer.js"/>
 /// <reference path="./process.js"/>
 /// <reference path="./console.js"/>
@@ -32,55 +33,14 @@
 /// <reference path="punycode.js" />
 /// <reference path="stringdecoder.js" />
 
-
 var global = new Object();
 var process = new Process();
 var console = new Console();
 var module = new Module();
 var exports = module.exports;
-var Buffer = Buffer;
 
-
-var require = function (args) {
-    if (typeof args === 'string' || args instanceof String)
-        args = args.substr(args.lastIndexOf('/') + 1);
-
-    switch (args) {
-        case 'process': return process;
-        case 'console': return console;
-        case 'util': return new Util();
-        case 'events': return new Events();
-        case 'domain': return new Domain();
-        case 'stringdecoder': return stringDecoder;
-        case 'stream': return new Stream();
-        case 'tls': return new TLS();
-        case 'fs': return new Fs();
-        case 'crypto': return new Crypto();
-        case 'net': return new Net();
-        case 'module': return new Module();
-        case 'path': return new Path();
-        case 'dgram': return new Dgram();
-        case 'dns': return new DNS();
-        case 'http': return new HTTP();
-        case 'https': return new HTTPS();
-        case 'url': return new URL();
-        case 'querystring': return new QueryString();
-        case 'readline': return new Readline();
-        case 'repl': return new REPL();
-        case 'vm': return new VM();
-        case 'child_process': return new Child_Process();
-        case 'assert': return new Assert();
-        case 'tty': return new TTY();
-        case 'zlib': return new Zlib();
-        case 'os': return new OS();
-        case 'cluster': return new Cluster();
-        case 'punycode': return new PunyCode();
-        case 'string_decoder': return new String_Decoder;
-    }
-};
-require.resolve = new Function();
-require.cache = new Object();
-require.extensions = new Array();
+// Allows req to autocomplete to require().
+delete requestAnimationFrame;
 
 var __filename = new String();
 var __dirname = new String();

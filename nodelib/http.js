@@ -2,7 +2,7 @@
 /// <reference path="events.js" />
 /// <reference path="stream.js" />
 
-var HTTP = function () {
+require.modules.http = new function () {
     /// <summary>
     /// To use the HTTP server and client one must require('http').
     /// </summary>
@@ -19,7 +19,7 @@ var HTTP = function () {
         /// </summary>
         /// <param name='requestListener' value='requestListener(new HTTP.ServerRequest(),new HTTP.ServerResponse())' optional='true' />
         /// <returns type='HTTP.Server' />
-        return new HTTP.Server();
+    	return new require.modules.http.Server();
     };
     // this.createClient = function (port, host) {}; //deprecated
     this.request = function (options, callback) {
@@ -40,10 +40,10 @@ var HTTP = function () {
         /// <param name="callback"></param>
     };
 
-    this.globalAgent = new HTTP.Agent();
+    this.globalAgent = new require.modules.http.Agent();
 };
 
-HTTP.Server = function () {
+require.modules.http.Server = function () {
     /// <summary>HTTP Server.</summary>
     /// <field name="maxHeadersCount">Limits maximum incoming headers count, equal to 1000 by default. </field> 
     this.listen = function (port, hostname, backlog, callback) {
@@ -68,9 +68,9 @@ HTTP.Server = function () {
     this.maxHeadersCount = new Number();
 
 };
-HTTP.Server.prototype = new Events.EventEmitter();
+require.modules.http.Server.prototype = new Events.EventEmitter();
 
-HTTP.ServerRequest = function () {
+require.modules.http.ServerRequest = function () {
     /// <summary>
     /// This object is created internally by a HTTP server -- not by the user -- <br />
     /// and passed as the first argument to a 'request' listener.
@@ -117,15 +117,15 @@ HTTP.ServerRequest = function () {
         /// <summary>Pauses request from emitting events. Useful to throttle back an upload.</summary>
     };
     this.resume = function() {
-    	/// <summary>
+        /// <summary>
         /// Resumes a paused request.
-    	/// </summary>
+        /// </summary>
     };
     this.connection = new Net.Socket();
 };
-HTTP.ServerRequest.prototype = new Stream();
+require.modules.http.ServerRequest.prototype = new Stream();
 
-HTTP.ServerResponse = function () {
+require.modules.http.ServerResponse = function () {
     /// <summary>
     /// This object is created internally by a HTTP server--not by the user. 
     /// It is passed as the second parameter to the 'request' event.
@@ -142,11 +142,11 @@ HTTP.ServerResponse = function () {
 
     //Event: 'close'
     this.writeContinue = function() {
-    	/// <summary>
+        /// <summary>
         /// Sends a HTTP/1.1 100 Continue message to the client, 
         /// indicating that the request body should be sent. 
-    	/// See the 'checkContinue' event on Server.
-    	/// </summary>
+        /// See the 'checkContinue' event on Server.
+        /// </summary>
     };
     this.writeHead = function(statusCode, reasonPhrase, headers) {
         /// <summary>
@@ -161,22 +161,22 @@ HTTP.ServerResponse = function () {
     };
     this.statusCode = new Number();
     this.setHeader = function (name, value) {
-    	/// <summary>
+        /// <summary>
         /// Sets a single header value for implicit headers. 
         /// If this header already exists in the to-be-sent headers, its value will be replaced. 
-    	/// Use an array of strings here if you need to send multiple headers with the same name.
-    	/// </summary>
-    	/// <param name="name"></param>
-    	/// <param name="value"></param>
+        /// Use an array of strings here if you need to send multiple headers with the same name.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="value"></param>
     };
     this.sendDate = new Boolean();
     this.getHeader = function (name) {
-    	/// <summary>
+        /// <summary>
         /// Reads out a header that's already been queued but not sent to the client. 
-    	/// Note that the name is case insensitive. This can only be called before headers get implicitly flushed.
-    	/// </summary>
-    	/// <param name="name"></param>
-    	/// <returns type=""></returns>
+        /// Note that the name is case insensitive. This can only be called before headers get implicitly flushed.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns type=""></returns>
         return new String();
     };
     this.removeHeader = function (name) {
@@ -206,15 +206,15 @@ HTTP.ServerResponse = function () {
         /// <param name='encoding' type='String' optional='true' />
     };
 };
-HTTP.ServerResponse.prototype = new Stream();
+require.modules.http.ServerResponse.prototype = new Stream();
 
-HTTP.Agent = function () {
+require.modules.http.Agent = function () {
     /// <summary>
     /// Previously, a single agent instance helped pool for a single host+port. 
     /// The current implementation now holds sockets for any number of hosts.<br />
     /// The current HTTP Agent also defaults client requests to using Connection:keep-alive. 
     /// If no pending HTTP requests are waiting on a socket to become free the socket is closed. This means that node's pool has the benefit of keep-alive when under load but still does not require developers to manually close the HTTP clients using keep-alive.
-	/// </summary>
+    /// </summary>
     /// <field name="maxSockets">
     /// By default set to 5. Determines how many concurrent sockets the agent can have open per host.
     /// </field>
@@ -230,14 +230,14 @@ HTTP.Agent = function () {
     this.requests = new Object();
 };
 
-HTTP.ClientRequest = function () {
-	/// <summary>
+require.modules.http.ClientRequest = function () {
+    /// <summary>
     /// This object is created internally and returned from http.request(). 
     /// It represents an in-progress request whose header has already been queued. 
     /// The header is still mutable using the setHeader(name, value), 
     /// getHeader(name), removeHeader(name) API. 
-	/// The actual header will be sent along with the first data chunk or when closing the connection.
-	/// </summary>
+    /// The actual header will be sent along with the first data chunk or when closing the connection.
+    /// </summary>
 
     //Event 'response'
     //Event: 'socket'
@@ -265,14 +265,14 @@ HTTP.ClientRequest = function () {
         /// <param name='encoding' type='String' optional='true' />
     };
     this.abort = function() {
-    	/// <summary>
+        /// <summary>
         /// Aborts a request. (New since v0.3.8.)
-    	/// </summary>
+        /// </summary>
     };
     this.setTimeout = function (timeout, callback) {
-    	/// <summary>
+        /// <summary>
         /// Once a socket is assigned to this request and is connected socket.setTimeout() will be called.
-    	/// </summary>
+        /// </summary>
         /// <param name='timeout' type='Number' />
         /// <param name='callback' value='callback()' optional='true' />
     };
@@ -283,16 +283,16 @@ HTTP.ClientRequest = function () {
         /// <param name='noDelay' type='Boolean' optional='true' />
     };
     this.setSocketKeepAlive = function (enable, initialDelay) {
-    	/// <summary>
+        /// <summary>
         /// Once a socket is assigned to this request and is connected socket.setKeepAlive() will be called.
-    	/// </summary>
-    	/// <param name="enable"></param>
-    	/// <param name="initialDelay"></param>
+        /// </summary>
+        /// <param name="enable"></param>
+        /// <param name="initialDelay"></param>
     };
 };
-HTTP.ClientRequest.prototype = new Stream();
+require.modules.http.ClientRequest.prototype = new Stream();
 
-HTTP.ClientResponse = function () {
+require.modules.http.ClientResponse = function () {
     /// <summary>
     /// This object is created when making a request with http.request().
     ///  It is passed to the 'response' event of the request object.
@@ -325,14 +325,14 @@ HTTP.ClientResponse = function () {
     };
     
     this.pause = function() {
-    	/// <summary>
+        /// <summary>
         /// Pauses response from emitting events. Useful to throttle back a download.
-    	/// </summary>
+        /// </summary>
     };
     this.resume = function() {
-    	/// <summary>
+        /// <summary>
         /// Resumes a paused response.
-    	/// </summary>
+        /// </summary>
     };
 };
-HTTP.ClientResponse.prototype = new Stream();
+require.modules.http.ClientResponse.prototype = new Stream();

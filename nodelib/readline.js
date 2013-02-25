@@ -1,7 +1,7 @@
-﻿var Readline = function(){
+﻿require.modules.readline = new function () {
     this.createInterface = function (options) {
         ///<summary>Interface to streams used for readline.</summary>
-        return new Readline.Interface();
+        return new require.modules.readline.Interface();
     };
     this.on = function (event, listener) {
         /// <summary>
@@ -50,7 +50,7 @@
 };
 
 
-Readline.Interface = function(){
+require.modules.readline.Interface = function () {
     this.setPrompt = function (prompt, length) {
         ///<summary>Sets the prompt, for example when you run `node` on the command line, you see `> `, which is node's prompt.</summary>
         ///<param name="prompt"></param>

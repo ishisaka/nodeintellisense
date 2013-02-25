@@ -2,7 +2,7 @@
 /// <reference path="./stream.js"/>
 /// <reference path="./events.js" />
 
-var TLS = function () {
+require.modules.tls = new function () {
     /// <summary>
     /// The tls module uses OpenSSL to provide Transport Layer Security and/or <br />
     /// Secure Socket Layer: encrypted stream communication.<br />
@@ -21,7 +21,7 @@ var TLS = function () {
         /// <param name='options' type='Object' />
         /// <param name='secureConnectionListener' value='secureConnectionListener(new TLS.CleartextStream())' optional='true' />
         /// <returns type='TLS.Server' />
-        return new TLS.Server();
+    	return new require.modules.tls.Server();
     };
     this.Connect = function (options, callback) {
     	/// <summary>
@@ -30,7 +30,7 @@ var TLS = function () {
     	/// <param name="options">option object.</param>
         /// <param name="callback" optional='true'></param>
         /// <returns type="TLS.CleartextStream()" />
-        return new TLS.CleartextStream();
+    	return new require.modules.tls.CleartextStream();
     };
     this.connect = function (port, host, options, secureConnectionListener) {
         /// <summary>
@@ -41,7 +41,7 @@ var TLS = function () {
         /// <param name='options' type='Object' optional='true' />
         /// <param name='secureConnectionListener' value='secureConnectionListener(new TLS.CleartextStream())' optional='true' />
         /// <returns type='TLS.CleartextStream' />
-        return new TLS.CleartextStream();
+    	return new require.modules.tls.CleartextStream();
     };
     this.createSecurePair = function (credentials, isServer, requestCert, rejectUnauthorized) {
         /// <summary>
@@ -61,7 +61,7 @@ var TLS = function () {
 };
 
 
-TLS.Server = function () {
+require.modules.tls.Server = function () {
     /// <summary>
     /// This class is a subclass of net.Server and has the same methods on it. <br />
     /// Instead of accepting just raw TCP connections, this accepts encrypted <br />
@@ -115,11 +115,9 @@ TLS.Server = function () {
 
 };
 
-TLS.Server.prototype = new Net.Server();
+require.modules.tls.Server.prototype = new Net.Server();
 
-
-
-TLS.CleartextStream = function () {
+require.modules.tls.CleartextStream = function () {
     /// <summary>
     /// This is a stream on top of the Encrypted stream that makes it possible <br />
     /// to read/write an encrypted data as a cleartext data.
@@ -171,4 +169,4 @@ TLS.CleartextStream = function () {
     this.remotePort = new Number();
 };
 
-TLS.CleartextStream.prototype = new Stream();
+require.modules.tls.CleartextStream.prototype = new Stream();

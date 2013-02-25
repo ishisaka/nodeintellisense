@@ -1,6 +1,6 @@
 ﻿/// <reference path="stream.js"/>
 
-var Util = function () {
+require.modules.util = new function () {
     /// <summary>These functions are in the module 'util'. Use require('util') to access them.</summary>
     this.format = function (format, args) {
         /// <summary>Returns a formatted string using the first argument as a printf-like format.</summary>

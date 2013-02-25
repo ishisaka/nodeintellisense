@@ -1,11 +1,7 @@
 ﻿/// <reference path="./buffer.js"/>
 
-var Dgram = function () {
-    /// <summary>
-    /// Datagram sockets are available through require('dgram').
-    /// </summary>
-    
-    this.createSocket = function (type, callback) {
+require.modules.crypto.dgram = {
+    createSocket: function (type, callback) {
         /// <summary>
         /// Creates a datagram Socket of the specified types. Valid types are udp4 and udp6.
         /// Takes an optional callback which is added as a listener for message events.
@@ -17,11 +13,11 @@ var Dgram = function () {
         ///  Attached as a listener to message events. Optional.
         /// </param>
         /// <returns type='Dgram.Socket'>Socket object</returns>
-        return new Dgram.Socket();
-    };
+    	return new require.modules.crypto.dgram.Socket();
+    }
 };
 
-Dgram.Socket = function (type, callback) {
+require.modules.crypto.dgram.Socket = function (type, callback) {
     /// <summary>
     /// The dgram Socket class encapsulates the datagram functionality. <br />
     /// It should be created via dgram.createSocket(type, [callback]).

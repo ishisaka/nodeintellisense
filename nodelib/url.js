@@ -1,6 +1,6 @@
 ﻿/// <reference path="node.js" />
 
-var URL = function () {
+require.modules.url = new function () {
     /// <summary>
     /// This module has utilities for URL resolution and parsing. Call require('url') to use it.
     /// </summary<>

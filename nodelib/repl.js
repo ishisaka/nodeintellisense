@@ -1,4 +1,4 @@
-﻿var REPL = function () {
+﻿require.modules.repl = new function () {
     /// <summary>
     /// A Read-Eval-Print-Loop (REPL) is available both as a standalone program <br />
     /// and easily includable in other programs. The REPL provides a way to <br />

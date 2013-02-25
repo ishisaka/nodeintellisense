@@ -1,6 +1,6 @@
 ﻿/// <reference path="./net.js"/>
 
-var TTY = function () {
+require.modules.tty = new function () {
     /// <summary>
     /// The tty module houses the tty.ReadStream and tty.WriteStream classes. In <br />
     /// most cases, you will not need to use this module directly.
@@ -35,7 +35,7 @@ var TTY = function () {
         	/// <param name="mode"></param> 
         };
     };
-    this.ReadStream.prototype = new Net.Socket();
+    this.ReadStream.prototype = new require.modules.net.Socket();
 
     this.WriteStream = function () {
         /// <summary>
@@ -55,5 +55,5 @@ var TTY = function () {
         this.rows = new Number();
         ////Event: 'resize'
     };
-    this.WriteStream.prototype = new Net.Socket();
+    this.WriteStream.prototype = new require.modules.net.Socket();
 };

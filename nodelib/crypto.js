@@ -1,6 +1,6 @@
 ﻿/// <reference path="./buffer.js"/>
 
-var Crypto = function () {
+require.modules.crypto =new function () {
     /// <summary>
     /// The crypto module requires OpenSSL to be available on the underlying platform. <br />
     /// It offers a way of encapsulating secure credentials to be used as part of a secure HTTPS net or http connection. <br />
@@ -15,7 +15,7 @@ var Crypto = function () {
         /// and `ca` (either a string or list of strings of PEM encoded CA certificates to trust)
         /// </param>
         /// <returns type='Credentials' />
-        return new Credentials();
+        return new require.modules.crypto.Credentials();
     };
     this.createHash = function (algorithm) {
         /// <summary>
@@ -27,7 +27,7 @@ var Crypto = function () {
         /// `openssl list-message-digest-algorithms` will display the available digest algorithms.
         /// </param>
         /// <returns type='Hash' />
-        return new Hash();
+        return new require.modules.crypto.Hash();
     };
     this.createHmac = function (algorithm, key) {
         /// <summary>
@@ -36,7 +36,7 @@ var Crypto = function () {
         ///<param name="algorithm">`algorithm` is dependent on the available algorithms supported by OpenSSL.</param>
         ///<param name="key">`key` is the hmac key to be used.</param>
         /// <returns type='Hmac' />
-        return new Hmac;
+        return new require.modules.crypto.Hmac();
     };
     this.createCipher = function (algorithm, password) {
         /// <summary>Creates and returns a cipher object, with the given algorithm and password.</summary>
@@ -46,7 +46,7 @@ var Crypto = function () {
         /// </param>
         /// <param name="password">`password` is used to derive key and IV, which must be 'binary' encoded string</param>
         /// <returns type='Cipher' />
-        return new Cipher();
+        return new require.modules.crypto.Cipher();
     };
     this.createCipheriv = function (algorithm, key, iv) {
         /// <summary>Creates and returns a cipher object, with the given algorithm, key and iv.</summary>
@@ -57,7 +57,7 @@ var Crypto = function () {
         /// <param name="key">`key` is a raw key used in algorithm. Must be `binary' encoded string.</param>
         /// <param name="iv">`iv` is an initialization vector. Must be `binary' encoded string.</param>
         /// <returns type='Cipher' />
-        return new Cipher();
+        return new require.modules.crypto.Cipher();
     };
     this.createDecipher = function (algorithm, password) {
         /// <summary>Creates and returns a decipher object, with the given algorithm and password.</summary>
@@ -67,7 +67,7 @@ var Crypto = function () {
         /// </param>
         /// <param name="password">`password` is used to derive key and IV, which must be 'binary' encoded string</param>
         /// <returns type='Decipher' />
-        return new Decipher();
+        return new require.modules.crypto.Decipher();
     };
     this.createDecipheriv = function (algorithm, key, iv) {
         /// <summary>Creates and returns a decipher object, with the given algorithm, key and iv.</summary>
@@ -78,7 +78,7 @@ var Crypto = function () {
         ///<param name="key">`key` is a raw key used in algorithm. Must be `binary' encoded string.</param>
         ///<param name="iv">`iv` is an initialization vector. Must be `binary' encoded string.</param>
         /// <returns type='Decipher' />
-        return new Decipher();
+        return new require.modules.crypto.Decipher();
     };
     this.createSign = function (algorithm) {
         /// <summary>
@@ -88,7 +88,7 @@ var Crypto = function () {
         /// </summary>
         /// <param name='algorithm' type='String' />
         /// <returns type='Signer' />
-        return new Signer();
+        return new require.modules.crypto.Signer();
     };
     this.createVerify = function(algorithm) {
         /// <summary>
@@ -96,7 +96,7 @@ var Crypto = function () {
         /// </summary>
         /// <param name='algorithm' type='String' />
         /// <returns type='Verify' />
-        return new Verify();
+        return new require.modules.crypto.Verify();
     };
     this.createDiffieHellman = function (prime, encoding) {
         /// <summary>
@@ -105,13 +105,13 @@ var Crypto = function () {
         /// <param name='prime' type='String' />
         /// <param name='encoding' type='String' optional='true' />
         /// <returns type='DiffieHellman' />
-        return new DiffieHellman();
+        return new require.modules.crypto.DiffieHellman();
     };
     this.getDiffieHellman = function (group_name) {
         
         /// <param name='group_name' type='String' />
         /// <returns type='DiffieHellman' />
-        return new DiffieHellman();
+        return new require.modules.crypto.DiffieHellman();
     };
     this.pbkdf2 = function (password, salt, iterations, keylen, callback) {
         /// <summary>
@@ -124,7 +124,6 @@ var Crypto = function () {
         /// <param name='keylen' type='Number' />
         /// <param name='callback' value='callback(new Error(),new Object())' />
         /// <returns type='Object' />
-        return new Object();
     };
     this.randomBytes = function (size, callback) {
         /// <summary>Generates cryptographically strong pseudo-random data.</summary>
@@ -135,9 +134,9 @@ var Crypto = function () {
     };
 };
 
-var Credentials = function () { }
+require.modules.crypto.Credentials = function () { }
 
-var Hash = function () {
+require.modules.crypto.Hash = function () {
     /// <summary>
     /// A hash object, a cryptographic hash with the given algorithm which can be used to generate hash digests.
     /// </summary>
@@ -161,7 +160,7 @@ var Hash = function () {
     };
 };
 
-var Hmac = function () {
+require.modules.crypto.Hmac = function () {
     /// <summary>
     /// An hmac object, a cryptographic hmac with the given algorithm and key.
     /// </summary>
@@ -185,7 +184,7 @@ var Hmac = function () {
     };
 };
 
-var Cipher = function () {
+require.modules.crypto.Cipher = function () {
     /// <summary>A cipher object</summary>
     this.update = function (data, input_encoding, output_encoding) {
         /// <summary>
@@ -215,7 +214,7 @@ var Cipher = function () {
     };
 };
 
-var Decipher = function () {
+require.modules.crypto.Decipher = function () {
     /// <summary>A decipher object</summary>
     this.update = function (data, input_encoding, output_encoding) {
         /// <summary>
@@ -245,7 +244,7 @@ var Decipher = function () {
     };
 };
 
-var Signer = function () {
+require.modules.crypto.Signer = function () {
     /// <summary>A signing object.</summary>
     this.update = function (data) {
         /// <summary>
@@ -265,7 +264,7 @@ var Signer = function () {
     };
 };
 
-var Verifier = function () {
+require.modules.crypto.Verify = function () {
     this.update = function (data) {
         /// <summary>
         /// Updates the verifier object with data. <br />
@@ -293,7 +292,7 @@ var Verifier = function () {
     };
 };
 
-var DiffieHellman = function () {
+require.modules.crypto.DiffieHellman = function () {
     /// <summary>A Diffie-Hellman key exchange object.</summary>
     this.generateKeys = function (encoding) {
         /// <summary>

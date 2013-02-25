@@ -1,6 +1,7 @@
-﻿/// <reference path="./child_process.js"/>
+﻿/// <reference path="./core.js" />
+/// <reference path="./child_process.js"/>
 
-var Cluster = function () {
+require.modules.cluster = new function () {
     /// <summary>
     /// A single instance of Node runs in a single thread. <br />
     /// To take advantage of multi-core systems the user will sometimes <br />
@@ -39,8 +40,8 @@ var Cluster = function () {
         /// Spawn a new worker process. This can only be called from the master process.
         /// </summary>
         /// <param name='env' type='Object' optional='true' />
-        /// <returns type='Cluster.Worker' />
-        new Cluster.Worker();
+        /// <returns type='require.modules.cluster.Worker' />
+        new require.modules.cluster.Worker();
     };
     this.disconnect = function (callback) {
         /// <summary>
@@ -121,7 +122,7 @@ var Cluster = function () {
 
 };
 
-Cluster.Worker = function () {
+require.modules.cluster.Worker = function () {
     /// <summary>
     /// A Worker object contains all public information and method about a worker. <br />
     /// In the master it can be obtained using cluster.workers. <br />
@@ -152,24 +153,24 @@ Cluster.Worker = function () {
         /// <param name='sendHandle' type='Object' optional='true' />
     };
     this.destroy = function() {
-    	/// <summary>
+        /// <summary>
         /// This function will kill the worker, and inform the master to not spawn a new worker. <br />
-    	/// The boolean suicide lets you distinguish between voluntary and accidental exit.
-    	/// </summary>
+        /// The boolean suicide lets you distinguish between voluntary and accidental exit.
+        /// </summary>
     };
     this.disconnect = function() {
-    	/// <summary>
+        /// <summary>
         /// When calling this function the worker will no longer accept new connections, <br />
         /// but they will be handled by any other listening worker. Existing connection <br />
         /// will be allowed to exit as usual. When no more connections exist, the IPC channel <br />
         /// to the worker will close allowing it to die graceful. When the IPC channel is closed <br />
         /// the disconnect event will emit, this is then followed by the exit event, there is <br />
-    	/// emitted when the worker finally die.
+        /// emitted when the worker finally die.
         /// Because there might be long living connections, it is useful to implement a timeout. <br />
         /// This example ask the worker to disconnect and after 2 seconds it will destroy the server. <br />
         /// An alternative would be to execute worker.destroy() after 2 seconds, but that would <br />
-    	/// normally not allow the worker to do any cleanup if needed.
-    	/// </summary>
+        /// normally not allow the worker to do any cleanup if needed.
+        /// </summary>
 
     };
     ////Event: 'message'
