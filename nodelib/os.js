@@ -3,7 +3,7 @@
     /// Provides a few basic operating-system related utility functions.
     /// Use require('os') to access this module.
     /// </summary>
-    this.tmpDir = function() {
+    this.tmpdir = function() {
     	/// <summary>
         /// Returns the operating system's default directory for temp files.
         /// </summary>
