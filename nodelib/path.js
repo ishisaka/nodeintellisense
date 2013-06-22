@@ -76,5 +76,26 @@
         /// <returns type='String' />
         return new String();
     };
+
+	/// <summary>
+	/// The platform-specific file separator. '\\' or '/'.
+	/// </summary>
+	/// <returns type='String' />
     this.sep = new String();
+
+    this.basename = function (p, ext) {
+        /// <summary>
+        /// Return the last portion of a path. Similar to the Unix basename command.
+        /// </summary>
+        /// <param name='p' type='String' />
+        /// <param name='ext' type='String' optional='true' />
+        /// <returns type='String' />
+        return new String();
+    };
+
+	/// <summary>
+	/// The platform-specific path delimiter, ; or ':'.
+	/// </summary>
+	/// <returns type='String' />
+	this.delimiter = new String();
 };
