@@ -1,6 +1,8 @@
 Node.js IntelliSense for Visual Studio
 ===
 
+##These are not maintaining! Please see [Node.js Tools for Visual Studio.](https://nodejstools.codeplex.com/)
+
 - Require VisualStudio 2012 / Visual Studio 2010
 - This project adds definitions for Node.js libraries to Visual Studio's Javascript IntelliSense. 
 
